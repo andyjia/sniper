@@ -1,0 +1,49 @@
+### SELECT
+POST http://localhost:8080/twirp/foo.v1.Foo/Echo
+# Host: localhost
+Content-Type: application/json
+# Content-Length: 19
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTYwMTUyMjYsImlhdCI6MTU5NjAxMTYyNiwidXNyIjoic29tZW9uZSJ9.h7YFYOL3y1raHe2XXWVVxabNnx7CMF8Ze_SYwJ_WXxA
+
+{
+   "message":"hello",
+    "age":1,
+    "query": "productCode like '%'"
+}
+
+
+### LOGIN
+POST http://localhost:8080/login
+Content-Type: application/json  
+
+{
+    "username": "someone",
+    "password": "p@ssword"
+}
+
+### SELECT 2
+POST http://localhost:8080/twirp/foo.v1.Foo/Echo
+Content-Type: application/x-www-form-urlencoded
+
+name=foo
+&password=bar
+
+### INSERT
+POST http://localhost:8080/twirp/foo.v1.Foo/Insert
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTU4NjU0NTYsImlhdCI6MTU5NTg2MTg1NiwidXNyIjoic29tZW9uZSJ9.udiJGnvX-12YqmSlU3Dj6X9L9TumxvmwDv0durnEHG8
+
+{
+    "msg": "",
+    "product": {
+        "productCode": "3",
+        "productName": "2",
+        "productLine": "Planes", 
+        "productScale": "4", 
+        "productVendor": "5", 
+        "productDescription": "6", 
+        "quantityInStock": 7, 
+        "buyPrice": "11.32", 
+        "mSRP": "22.33"
+    }
+}

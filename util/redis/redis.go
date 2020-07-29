@@ -56,7 +56,7 @@ func Get(ctx context.Context, name string) *Redis {
 
 	c := redis.New(redis.Options{
 		// TODO 支持更多配置
-		Address:      conf.GetString("REDIS_" + name + "_HOST"),
+		Address:      conf.Get("REDIS_" + name + "_HOST"),
 		PoolSize:     conf.GetInt("REDIS_" + name + "_MAX_CONNS"),
 		MinIdleConns: conf.GetInt("REDIS_" + name + "_INIT_CONNS"),
 		MaxConnAge:   60 * time.Second, // 连接存活最长时间
