@@ -12,14 +12,14 @@ import (
 type Dao struct{}
 
 // QueryAll query all records
-func (d *Dao) QueryAll(ctx context.Context, queryString string) (product []*pb.Product, err error) {
+func (d *Dao) QueryAll(ctx context.Context, searchCondition *pb.ProductSearchCondition) (product []*pb.Product, err error) {
 	var products []*pb.Product
+	sql := "select productCode, productName from products where ProductCode = ? and ProductName like ?"
 
 	c := db.Get(ctx, "default")
-	log.Get(ctx).Infoln("queryString", queryString)
-	sql := "select productCode, productName from products where " + queryString
+
 	q := db.SQLSelect("products", sql)
-	result, err := c.QueryContext(ctx, q)
+	result, err := c.QueryContext(ctx, q, searchCondition.ProductCode, searchCondition.ProductName)
 	if err != nil {
 		return nil, err
 	}

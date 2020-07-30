@@ -25,8 +25,8 @@ var loginHooks = twirp.ChainHooks(
 func initMux(mux *http.ServeMux, isInternal bool) {
 	{
 		server := &fooserver1.Server{}
-		// handler := foo_v1.NewFooServer(server, hooks)
-		handler := foo_v1.NewFooServer(server, loginHooks)
+		handler := foo_v1.NewFooServer(server, hooks)
+		// handler := foo_v1.NewFooServer(server, loginHooks)
 		mux.Handle(foo_v1.FooPathPrefix, handler)
 	}
 }

@@ -13,9 +13,10 @@ type Server struct{}
 
 // Echo 实现 /twirp/foo.v1.Foo/Echo 接口
 func (s *Server) Echo(ctx context.Context, req *pb.EchoReq) (resp *pb.EchoResp, err error) {
-	query := req.Query
+	searchCondtion := req.ProductSearchCondtion
+	log.Get(ctx).Errorf("searchCondtion....=%s", searchCondtion.String())
 	dao := &foodao1.Dao{}
-	result, err := dao.QueryAll(ctx, query)
+	result, err := dao.QueryAll(ctx, searchCondtion)
 	if err != nil {
 		log.Get(ctx).Errorf("error....=%s", err.Error())
 		return &pb.EchoResp{Msg: "NG", Products: nil}, nil

@@ -3,12 +3,14 @@ POST http://localhost:8080/twirp/foo.v1.Foo/Echo
 # Host: localhost
 Content-Type: application/json
 # Content-Length: 19
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTYwMTUyMjYsImlhdCI6MTU5NjAxMTYyNiwidXNyIjoic29tZW9uZSJ9.h7YFYOL3y1raHe2XXWVVxabNnx7CMF8Ze_SYwJ_WXxA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTYwODU4NjgsImlhdCI6MTU5NjA4MjI2OCwidXNyIjoic29tZW9uZSJ9.mhLIbOxbpLcb559OHorjgtNSFs-_GF7gP9-M3DAfL4U
 
 {
    "message":"hello",
-    "age":1,
-    "query": "productCode like '%'"
+    "productSearchCondtion": {
+        "productCode": "S10_1949",
+        "productName": "%A%"
+    }
 }
 
 

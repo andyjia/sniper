@@ -17,7 +17,7 @@ service Foo {
 message EchoReq {
     // FIXME 请求字段必须写注释
     string msg = 1;
-    string query = 2;
+    ProductSearchCondition productSearchCondtion = 2;
 }
 
 message EchoResp {
@@ -36,6 +36,11 @@ message InsertResp {
     // FIXME 响应字段必须写注释
     string msg = 1;
     string insertRowID = 2;
+}
+
+message ProductSearchCondition {
+    string productCode = 1;
+    string productName = 2;
 }
 
 message Product {
