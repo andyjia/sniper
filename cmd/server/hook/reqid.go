@@ -2,7 +2,6 @@ package hook
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"sniper/util/ctxkit"
@@ -21,7 +20,6 @@ func NewRequestID() *twirp.ServerHooks {
 			twirp.SetHTTPResponseHeader(ctx, "x-trace-id", traceID)
 
 			ctx = ctxkit.WithTraceID(ctx, traceID)
-			fmt.Printf("ctx=%s \n", ctxkit.GetTraceID(ctx))
 
 			return ctx, nil
 		},
